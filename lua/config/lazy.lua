@@ -36,8 +36,6 @@ require("lazy").setup({
         telescope.setup({
           -- You can add any Telescope configuration here
         })
-	-- NeoTree Key Mapping
-	vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal right toggle<CR>', {silent=true})
         -- Telescope key mappings
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -70,8 +68,24 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
-      }
-    }
+      },
+      config = function()
+        -- NeoTree Key Mapping
+        vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal right toggle<CR>', {silent=true})
+      end,
+    },
+    -- Add Lualine
+    {
+      "nvim-lualine/lualine.nvim",
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      config = function()
+        require('lualine').setup({
+          options = {
+            theme = 'dracula'
+          }
+        })
+      end,
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   install = { colorscheme = { "habamax" } },
