@@ -39,6 +39,17 @@ return function()
         }
       }
     end,
+    ["tsserver"] = function()
+      lspconfig.ts_ls.setup {}
+    end,
+
+    ["pyright"] = function()
+      lspconfig.pyright.setup {
+       on_attach=on_attach,
+        capabilities=capabilities,
+        -- extra
+      }
+    end,
   })
 
   -- Global mappings.
