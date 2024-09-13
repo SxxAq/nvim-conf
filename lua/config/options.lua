@@ -7,12 +7,13 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
 
+-- Set Gruvbox colorscheme
+-- vim.cmd('colorscheme gruvbox')
+
+
+-- Format keymap
+vim.keymap.set("n", "<leader>I", vim.lsp.buf.format, {})
 
 
 
--- Indentation shortcuts
-vim.keymap.set('n', '<C-S-i>', '>>', { noremap = true, silent = true, desc = "Indent line" })
-vim.keymap.set('n', '<C-S-I>', '<<', { noremap = true, silent = true, desc = "Unindent line" })
-vim.keymap.set('v', '<C-S-i>', '>gv', { noremap = true, silent = true, desc = "Indent selection" })
-vim.keymap.set('v', '<C-S-I>', '<gv', { noremap = true, silent = true, desc = "Unindent selection" })
 

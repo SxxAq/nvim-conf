@@ -6,15 +6,15 @@ return function()
     print("LSP attached to buffer " .. bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>ca', function()
       print("Code Action Triggered")
       vim.lsp.buf.code_action()
-    end, opts)
+    end, {})
     print("LSP keybindings set.")
   end
 
@@ -39,7 +39,7 @@ return function()
         }
       }
     end,
-    ["tsserver"] = function()
+    ["ts_ls"] = function()
       lspconfig.ts_ls.setup {}
     end,
 
@@ -59,16 +59,16 @@ return function()
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
   -- Debug command
-  vim.api.nvim_create_user_command('LspDebug', function()
-    local clients = vim.lsp.get_active_clients()
-    if #clients == 0 then
-      print("No active LSP clients.")
-    else
-      for i, client in ipairs(clients) do
-        print(string.format("LSP Client %d: %s", i, client.name))
-      end
-    end
-  end, {})
+  -- vim.api.nvim_create_user_command('LspDebug', function()
+  --  local clients = vim.lsp.get_active_clients()
+  --  if #clients == 0 then
+  --    print("No active LSP clients.")
+  --  else
+  --    for i, client in ipairs(clients) do
+  --      print(string.format("LSP Client %d: %s", i, client.name))
+  --    end
+  --  end
+  -- end, {})
 
-  print("LSP configuration loaded.")
+  -- print("LSP configuration loaded.")
 end

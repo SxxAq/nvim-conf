@@ -1,12 +1,12 @@
 return {
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    branch = '0.1.x',
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    branch = "0.1.x",
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-ui-select.nvim',
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function()
       require("config.plugins.telescope")
@@ -33,7 +33,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("config.plugins.lualine")
     end,
@@ -46,14 +46,14 @@ return {
           icons = {
             package_installed = "✓",
             package_pending = "➜",
-            package_uninstalled = "✗"
-          }
-        }
+            package_uninstalled = "✗",
+          },
+        },
       })
-    end
+    end,
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
@@ -62,18 +62,43 @@ return {
           "ts_ls",
           "pyright",
         },
-        automatic_installation = true
+        automatic_installation = true,
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { 
+    dependencies = {
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim"
+      "williamboman/mason-lspconfig.nvim",
     },
     config = function()
       require("config.plugins.lspconfig")()
-    end
+    end,
   },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvimtools/none-ls-extras.nvim",
+    },
+    config = function()
+      require("config.plugins.none-ls")
+    end,
+  },
+  {
+    "goolord/alpha-nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("alpha").setup(require("alpha.themes.dashboard").config)
+    end,
+  },
+  {
+        'gruvbox-community/gruvbox',
+        lazy = false, -- or true if you want to lazy load
+        config = function()
+            -- Set Gruvbox colorscheme
+            vim.cmd('colorscheme gruvbox')
+        end
+    },
 }
