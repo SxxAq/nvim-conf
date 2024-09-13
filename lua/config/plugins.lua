@@ -90,15 +90,14 @@ return {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("alpha").setup(require("alpha.themes.dashboard").config)
+      require("config.plugins.alpha")
     end,
   },
   {
-        'gruvbox-community/gruvbox',
-        lazy = false, -- or true if you want to lazy load
-        config = function()
-            -- Set Gruvbox colorscheme
-            vim.cmd('colorscheme gruvbox')
-        end
-    },
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme gruvbox")
+    end,
+  },
 }
