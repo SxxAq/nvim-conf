@@ -3,16 +3,15 @@ local dashboard = require("alpha.themes.dashboard")
 
 -- Set header
 dashboard.section.header.val = {
-	"                                                     ",
-	"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-	"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-	"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-	"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-	"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-	"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-	"                                                     ",
+  "                                              ",
+  "       ████ ██████           █████      ██",
+  "      ███████████             █████ ",
+  "      █████████ ███████████████████ ███   ███████████",
+  "     █████████  ███    █████████████ █████ ██████████████",
+  "    █████████ ██████████ █████████ █████ █████ ████ █████",
+  "  ███████████ ███    ███ █████████ █████ █████ ████ █████",
+  " ██████  █████████████████████ ████ █████ █████ ████ ██████",
 }
-
 -- Set menu
 dashboard.section.buttons.val = {
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -24,9 +23,11 @@ dashboard.section.buttons.val = {
 
 -- Set footer
 dashboard.section.footer.val = {
-	"The computing scientist's main challenge is not to",
-	"get confused by the complexities of his own making.",
-	"                               - Edsger W. Dijkstra",
+    "Your work is going to fill a large part of your life,",
+    "and the only way to be truly satisfied is to do what",
+    "you believe is great work. And the only way to do",
+    "great work is to love what you do.",
+    "                               - Steve Jobs",
 }
 
 -- Set custom highlight groups
