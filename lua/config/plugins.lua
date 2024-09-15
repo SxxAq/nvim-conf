@@ -102,20 +102,16 @@ return {
   },
   -- Autocompletions with Luasnip
   {
-    { "hrsh7th/cmp-nvim-lsp" },
-    {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
-      dependencies = {
-        "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
-      },
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
     },
-    {
-      "hrsh7th/nvim-cmp",
-      config = function()
-        require("config.plugins.autocompletions")
-      end,
-    },
+    config = function()
+      require("config.plugins.autocompletions")
+    end,
   },
   -- DAP
   {
@@ -127,6 +123,7 @@ return {
       "mxsdev/nvim-dap-vscode-js",
       {
         "microsoft/vscode-js-debug",
+        opt = true,
         build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
       },
     },
@@ -165,10 +162,6 @@ return {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-    },
     config = function()
       require("config.plugins.which-key")
     end,
