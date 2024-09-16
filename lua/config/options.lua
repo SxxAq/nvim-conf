@@ -7,8 +7,7 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
 
--- Set Gruvbox colorscheme
--- vim.cmd('colorscheme gruvbox')
+
 
 
 -- Format keymap
@@ -45,32 +44,8 @@ map('i', '<C-a>', '<Esc>ggVG', { desc = "Select all" })
 map('n', '<C-s>', ':w<CR>', { desc = "Save file" })
 map('i', '<C-s>', '<Esc>:w<CR>', { desc = "Save file" })
 
--- Undo (Ctrl+Z)
-map('n', '<C-z>', 'u', { desc = "Undo" })
-map('i', '<C-z>', '<C-o>u', { desc = "Undo" })
 
--- Redo (Ctrl+Y)
-map('n', '<C-y>', '<C-r>', { desc = "Redo" })
-map('i', '<C-y>', '<C-o><C-r>', { desc = "Redo" })
-
--- New File (Ctrl+N)
-map('n', '<C-n>', ':enew<CR>', { desc = "New file" })
-
--- Open File (Ctrl+O)
-map('n', '<C-o>', ':browse confirm e<CR>', { desc = "Open file" })
 
 -- Close File (Ctrl+W)
-map('n', '<C-w>', ':confirm close<CR>', { desc = "Close file" })
-
--- Find (Ctrl+F)
-map('n', '<C-f>', '/', { desc = "Find" })
-map('i', '<C-f>', '<Esc>/', { desc = "Find" })
-
--- Replace (Ctrl+H)
-map('n', '<C-h>', ':%s//g<Left><Left>', { desc = "Replace" })
-
--- Optional: Terminal support
-map('t', '<C-v>', '<C-\\><C-n>"+pa', { desc = "Paste in terminal" })
-map('t', '<C-c>', '<C-\\><C-n>"+yi', { desc = "Copy from terminal" })
-
+map('n', '<C-w>', ':confirm close<CR>', { desc = "Close file", noremap=true,silent=true })
 

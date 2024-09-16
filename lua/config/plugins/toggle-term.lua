@@ -34,7 +34,6 @@ function _G.set_terminal_keymaps()
 	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
 	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-  vim.keymap.set("t", "<C-q>", [[<C-\><C-n>:q<CR>]], opts)
 end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
@@ -46,37 +45,6 @@ local function create_toggle_term(direction)
 	end
 end
 
--- Define specific terminals
-local bash = Terminal:new({ cmd = "bash", hidden = true })
-local python = Terminal:new({ cmd = "python", hidden = true })
-local htop = Terminal:new({ cmd = "htop", hidden = true })
-
-function _G.toggle_terminal(name)
-	if name == "bash" then
-		bash:toggle()
-	elseif name == "python" then
-		python:toggle()
-	elseif name == "htop" then
-		htop:toggle()
-	end
-end
-
--- Function to cycle through terminals
-function _G.cycle_terminals(direction)
-    local terms = require("toggleterm").get_all()
-    local term_count = #terms
-    if term_count == 0 then
-        return
-    end
-    local current_term = vim.g.toggleterm_current_term or 1
-    if direction == "next" then
-        current_term = current_term % term_count + 1
-    elseif direction == "prev" then
-        current_term = (current_term - 2 + term_count) % term_count + 1
-    end
-    vim.g.toggleterm_current_term = current_term
-    terms[current_term]:toggle()
-end
 -- Keybindings for creating new terminals in different layouts
 vim.api.nvim_set_keymap("n", "<leader>th", "", {
 	noremap = true,
@@ -94,6 +62,21 @@ vim.api.nvim_set_keymap("n", "<leader>tf", "", {
 	callback = create_toggle_term("float"),
 })
 
+-- Define specific terminals
+local bash = Terminal:new({ cmd = "bash", hidden = true })
+local python = Terminal:new({ cmd = "python", hidden = true })
+local htop = Terminal:new({ cmd = "htop", hidden = true })
+
+function _G.toggle_terminal(name)
+	if name == "bash" then
+		bash:toggle()
+	elseif name == "python" then
+		python:toggle()
+	elseif name == "htop" then
+		htop:toggle()
+	end
+end
+
 -- Keybindings for specific terminals
 vim.api.nvim_set_keymap("n", "<leader>tb", "<cmd>lua toggle_terminal('bash')<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tp", "<cmd>lua toggle_terminal('python')<CR>", { noremap = true, silent = true })
@@ -106,7 +89,3 @@ end
 
 -- Keybinding for toggling all terminals
 vim.api.nvim_set_keymap("n", "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", { noremap = true, silent = true })
-
--- Keybindings for cycling through terminals
-vim.api.nvim_set_keymap("n", "<leader>tn", ':lua cycle_terminals("next")<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>tN", ':lua cycle_terminals("prev")<CR>', { noremap = true, silent = true })

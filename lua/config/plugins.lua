@@ -1,6 +1,12 @@
 return {
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  {
+     {
+   "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme gruvbox")
+    end,
+  },
+    {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     branch = "0.1.x",
@@ -91,13 +97,6 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("config.plugins.alpha")
-    end,
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = function()
-      vim.cmd("colorscheme gruvbox")
     end,
   },
   -- Autocompletions with Luasnip
