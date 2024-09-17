@@ -1,7 +1,5 @@
--- nvim/lua/config/plugins/autocompletions.lua
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
@@ -42,7 +40,6 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  }, {
     { name = 'buffer' },
     { name = 'path' },
   }),

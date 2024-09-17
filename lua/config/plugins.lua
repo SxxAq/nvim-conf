@@ -1,15 +1,13 @@
 return {
-     {
-   "ellisonleao/gruvbox.nvim",
+  {
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
       vim.cmd("colorscheme gruvbox")
     end,
   },
-    {
+  {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
-    branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
@@ -99,7 +97,6 @@ return {
       require("config.plugins.alpha")
     end,
   },
-  -- Autocompletions with Luasnip
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -112,7 +109,6 @@ return {
       require("config.plugins.autocompletions")
     end,
   },
-  -- DAP
   {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -122,7 +118,6 @@ return {
       "mxsdev/nvim-dap-vscode-js",
       {
         "microsoft/vscode-js-debug",
-        opt = true,
         build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
       },
     },
@@ -139,10 +134,8 @@ return {
       require("config.plugins.spectre")
     end,
   },
-  -- ToggleTerm
   {
     "akinsho/toggleterm.nvim",
-    version = "*",
     config = function()
       require("config.plugins.toggle-term")
     end,
@@ -156,7 +149,6 @@ return {
   },
   {
     "folke/which-key.nvim",
-    event = "VeryLazy",
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -167,10 +159,23 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("config.plugins.bufferline")
     end,
   },
+  -- Additional plugins
+  {
+    "windwp/nvim-autopairs",
+    config = true
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = true
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = true
+  },
 }
+
