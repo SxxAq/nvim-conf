@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Set options
+vim.wo.number=true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -23,8 +24,8 @@ vim.opt.splitbelow = true
 vim.opt.iskeyword:append("-")
 
 
-vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
-vim.cmd[[highlight NonText guibg=NONE ctermbg=NONE]]
+-- vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
+-- vim.cmd[[highlight NonText guibg=NONE ctermbg=NONE]]
 
 -- Keymaps
 vim.keymap.set("n", "<leader>I", vim.lsp.buf.format, { desc = "Format file" })

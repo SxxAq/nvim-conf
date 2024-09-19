@@ -1,7 +1,3 @@
---Number Line
-vim.wo.number = true
---  vim.wo.relativenumber=true
-
 -- Setting Imports
 print("Loading bootstrap")
 require("config.bootstrap")

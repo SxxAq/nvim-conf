@@ -37,7 +37,7 @@ require("neo-tree").setup({
     },
   },
   window = {
-    position = "left",
+    position = "right",
     width = 30,
     mapping_options = {
       noremap = true,
@@ -67,8 +67,22 @@ require("neo-tree").setup({
       ["q"] = "close_window",
       ["R"] = "refresh",
     }
-  }
+  },
+  use_popups_for_input = false,
+  use_floating_windows = false,
+  use_default_mappings = false,
+  hide_root_node = false,
+  retain_hidden_root_indent = false,
+  -- Enable transparency
+  transparent = true,
 })
 
 vim.keymap.set('n', '<Leader>e', ':Neotree reveal right toggle<CR>', { silent = true })
 vim.keymap.set('n', '<Leader><Tab>', ':Neotree focus<CR>', { silent = true })
+
+vim.cmd[[
+  highlight NeoTreeNormal guibg=NONE ctermbg=NONE
+  highlight NeoTreeNormalNC guibg=NONE ctermbg=NONE
+  highlight NeoTreeEndOfBuffer guibg=NONE ctermbg=NONE
+]]
+

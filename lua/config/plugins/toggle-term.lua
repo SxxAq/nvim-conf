@@ -10,7 +10,7 @@ toggleterm.setup({
     end,
     open_mapping = [[<c-`>]],
     hide_numbers = true,
-    shade_terminals = true,
+    shade_terminals = false,  -- Disable shading for transparency
     start_in_insert = true,
     insert_mappings = true,
     persist_size = true,
@@ -18,13 +18,43 @@ toggleterm.setup({
     close_on_exit = true,
     shell = vim.o.shell,
     float_opts = {
-        border = "curved",
+        border = "single",  -- Thin border for floating terminal
         width = 120,
         height = 30,
-        winblend = 3,
+        winblend = 15,  -- Adjust for desired transparency (0-100)
+    },
+    highlights = {
+        Normal = {
+            guibg = "NONE",  -- Transparent background
+        },
+        NormalFloat = {
+            link = "Normal"
+        },
+        FloatBorder = {
+            guifg = "#80a0ff",
+            guibg = "NONE",
+        },
     },
 })
 
+-- Function to set common options for all terminal types
+local function set_terminal_options(term)
+    vim.api.nvim_win_set_option(term.window, "winhighlight", "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder")
+    vim.api.nvim_win_set_option(term.window, "winblend", 15)  -- Adjust for desired transparency (0-100)
+end
+
+-- Override the Toggle function to set options for all terminal types
+local Terminal = require("toggleterm.terminal").Terminal
+local old_toggle = Terminal.Toggle
+function Terminal:Toggle(...)
+    old_toggle(self, ...)
+    if self.window then
+        set_terminal_options(self)
+    end
+end
+
+-- Rest of your configuration remains the same
+-- ...
 -- Terminal keymaps
 function _G.set_terminal_keymaps()
     local opts = {buffer = 0}
