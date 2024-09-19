@@ -1,55 +1,151 @@
+-- Bufferline configuration
 local bufferline = require("bufferline")
 
 bufferline.setup({
 	options = {
-		mode = "buffers", -- use "tabs" to display tabpages instead
-		numbers = "none", -- no buffer numbers
-		close_command = "bdelete! %d", -- close buffer command
-		right_mouse_command = "bdelete! %d", -- right click closes buffer
-		left_mouse_command = "buffer %d", -- left click switches buffer
-		middle_mouse_command = nil, -- no middle mouse action
-		-- Indicator icon on the active buffer (like in the image)
+		mode = "buffers",
+		style_preset = bufferline.style_preset.minimal,
+		themable = true,
+		numbers = "none",
+		close_command = "bdelete! %d",
+		right_mouse_command = "bdelete! %d",
+		left_mouse_command = "buffer %d",
+		middle_mouse_command = nil,
 		indicator = {
-			icon = "▎", -- vertical bar indicator for the active buffer
+			icon = " ",
 			style = "icon",
 		},
-		-- Custom buffer close icon (use "✕" to mimic an "X" button)
-		buffer_close_icon = "", -- "X" close button for individual buffers
-		modified_icon = "●", -- show "●" for modified buffers
-		close_icon = "", -- "X" icon on the far right to close all
-		left_trunc_marker = "", -- icon when buffer names are truncated
-		right_trunc_marker = "", -- icon when buffer names are truncated
-		max_name_length = 18, -- buffer name length
-		max_prefix_length = 15, -- buffer prefix length for duplicates
-		tab_size = 18, -- tab size
-		diagnostics = "nvim_lsp", -- show LSP diagnostics
-		diagnostics_update_in_insert = false, -- update diagnostics in normal mode
+		buffer_close_icon = "", -- Smaller close icon
+		modified_icon = "●",
+		close_icon = "", -- Smaller close icon
+		left_trunc_marker = "", -- Better left separator
+		right_trunc_marker = "", -- Better right separator
+		max_name_length = 18,
+		max_prefix_length = 15,
+		tab_size = 13,
+		diagnostics = "nvim_lsp",
+		diagnostics_update_in_insert = false,
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
-			-- Show diagnostic count on buffer
 			return "(" .. count .. ")"
 		end,
-		-- Offset to integrate with NeoTree (or any other file explorer)
 		offsets = {
 			{
-				filetype = "NeoTree", -- or "NvimTree"
-				text = "File Explorer", -- file explorer label
-				text_align = "left", -- align text to the left
+				filetype = "NvimTree",
+				text = "File Explorer",
+				text_align = "left",
 			},
 		},
-		-- Show filetype icons on buffers
-		show_buffer_icons = true, -- show icons like file types
-		show_buffer_close_icons = true, -- show "X" close icon on buffers
-		show_close_icon = false, -- disable global close icon on the right
-		show_tab_indicators = true, -- show indicators for modified buffers
-		persist_buffer_sort = true, -- keep buffer sort order
-		-- Slanted separators between buffers to achieve a modern look
-		separator_style = "slant", -- "slant" to match the image
-		enforce_regular_tabs = false, -- allow irregular tab widths
-		always_show_bufferline = true, -- always show the bufferline
+		color_icons = true,
+		show_buffer_icons = true,
+		show_buffer_close_icons = true,
+		show_close_icon = false,
+		show_tab_indicators = true,
+		persist_buffer_sort = true,
+		separator_style = "thin",
+		enforce_regular_tabs = true,
+		always_show_bufferline = true,
+		hover = {
+			enabled = true,
+			delay = 200,
+			reveal = { "close" },
+		},
+		sort_by = "id",
+	},
+	highlights = {
+		fill = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+		},
+		background = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+		},
+		buffer_visible = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+		},
+		buffer_selected = {
+			fg = "#ebdbb2",
+			bg = "#504945",
+			bold = true,
+			italic = false,
+		},
+		indicator_selected = {
+			fg = "#b8bb26",
+			bg = "#504945",
+		},
+		modified = {
+			fg = "#fb4934",
+			bg = "#3c3836",
+		},
+		modified_visible = {
+			fg = "#fb4934",
+			bg = "#3c3836",
+		},
+		modified_selected = {
+			fg = "#fb4934",
+			bg = "#504945",
+		},
+		duplicate_selected = {
+			fg = "#ebdbb2",
+			bg = "#504945",
+			italic = true,
+		},
+		duplicate_visible = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+			italic = true,
+		},
+		duplicate = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+			italic = true,
+		},
+		separator_selected = {
+			fg = "#282828",
+			bg = "#504945",
+		},
+		separator_visible = {
+			fg = "#282828",
+			bg = "#3c3836",
+		},
+		separator = {
+			fg = "#282828",
+			bg = "#3c3836",
+		},
+		offset_separator = {
+			fg = "#282828",
+			bg = "#3c3836",
+		},
+		close_button = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+		},
+		close_button_visible = {
+			fg = "#ebdbb2",
+			bg = "#3c3836",
+		},
+		close_button_selected = {
+			fg = "#ebdbb2",
+			bg = "#504945",
+		},
+		tab = {
+			fg = "#a89984",
+			bg = "#3c3836",
+		},
+		tab_selected = {
+			fg = "#ebdbb2",
+			bg = "#504945",
+			bold = true,
+		},
+		tab_close = {
+			fg = "#a89984",
+			bg = "#3c3836",
+		},
 	},
 })
 
--- Keymaps for BufferLine
+-- Keymaps
 vim.keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { desc = "Toggle pin" })
 vim.keymap.set("n", "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete non-pinned buffers" })
 vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
