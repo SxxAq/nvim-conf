@@ -66,6 +66,7 @@ require("neo-tree").setup({
       ["m"] = "move",
       ["q"] = "close_window",
       ["R"] = "refresh",
+      ["h"] = "toggle_hidden", -- Add keybinding for toggling hidden files
     }
   },
   use_popups_for_input = false,
@@ -73,8 +74,12 @@ require("neo-tree").setup({
   use_default_mappings = false,
   hide_root_node = false,
   retain_hidden_root_indent = false,
-  -- Enable transparency
   transparent = true,
+  filtered_items = {  -- Add this section to handle hidden files
+    visible = true,  -- Shows hidden files by default
+    hide_dotfiles = false,  -- Disable hiding of dotfiles
+    hide_gitignored = false,  -- Optionally show gitignored files
+  }
 })
 
 vim.keymap.set('n', '<Leader>e', ':Neotree reveal right toggle<CR>', { silent = true })

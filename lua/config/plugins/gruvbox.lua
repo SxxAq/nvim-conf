@@ -4,9 +4,7 @@ vim.o.background = "dark"
 vim.g.gruvbox_material_enable_italic = true
 
 -- Load Gruvbox colorscheme
---vim.cmd('colorscheme gruvbox')
-vim.cmd.colorscheme("gruvbox-material")
-
+vim.cmd[[colorscheme tokyonight-storm]]
 -- Function to force transparency
 local function force_transparency()
 	-- List of highlight groups to make transparent

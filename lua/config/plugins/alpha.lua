@@ -33,14 +33,14 @@ dashboard.section.footer.val = {
 
 -- Set custom highlight groups
 local custom_colors = {
-    bg = "#282828",
-    fg = "#ebdbb2",
-    yellow = "#fabd2f",
-    cyan = "#8ec07c",
-    green = "#b8bb26",
-    orange = "#fe8019",
-    purple = "#d3869b",
-    red = "#fb4934",
+    -- bg = "#eff1f5", -- Base color
+    fg = "#4c4f69", -- Text color
+    yellow = "#df8e1d",
+    cyan = "#179299",
+    green = "#40a02b",
+    orange = "#fe640b",
+    purple = "#8839ef",
+    red = "#d20f39",
 }
 
 vim.api.nvim_set_hl(0, "AlphaHeader", { fg = custom_colors.yellow, bg = custom_colors.bg })

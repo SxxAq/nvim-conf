@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Set options
+vim.opt.laststatus = 3
+vim.opt.cmdheight=0
 vim.wo.number=true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -22,7 +24,8 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.iskeyword:append("-")
-
+vim.opt.ruler=false
+vim.opt.showmode=false
 
 -- vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
 -- vim.cmd[[highlight NonText guibg=NONE ctermbg=NONE]]
