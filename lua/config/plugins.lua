@@ -104,11 +104,11 @@ return {
 		end,
 	},
 	{
-	  "goolord/alpha-nvim",
-	  dependencies = { "nvim-tree/nvim-web-devicons" },
-	  config = function()
-	    require("config.plugins.alpha")
-	  end,
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("config.plugins.alpha")
+		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -190,12 +190,19 @@ return {
 			require("config.plugins.which-key")
 		end,
 	},
+	-- {
+	--   "akinsho/bufferline.nvim",
+	--   dependencies = "nvim-tree/nvim-web-devicons",
+	--   config = function()
+	--     require("config.plugins.bufferline")
+	--   end,
+	-- },
 	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		"kdheepak/tabline.nvim",
 		config = function()
-			require("config.plugins.bufferline")
+			require("tabline").setup({ enable = false })
 		end,
+		requires = { "hoob3rt/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 	},
 	-- Additional plugins
 	{
@@ -215,5 +222,11 @@ return {
 		config = function()
 			vim.g.highlightedyank_highlight_duration = 500
 		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			-- options
+		},
 	},
 }

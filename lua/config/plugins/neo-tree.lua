@@ -73,7 +73,7 @@ require("neo-tree").setup({
   use_floating_windows = false,
   use_default_mappings = false,
   hide_root_node = false,
-  retain_hidden_root_indent = false,
+  retain_hidden_root_indent = true,
   transparent = true,
   filtered_items = {  -- Add this section to handle hidden files
     visible = true,  -- Shows hidden files by default
